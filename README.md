@@ -10,8 +10,7 @@ Lien vers la  repo : https://github.com/Exaye/CRB
 ## Info utiles
 On utilise la librairie servo, native à Arduino :
 
-|      Plage      |      Write      |      Write(ms)     | \n
-| :-------------- | :-------------: | -----------------: | \n
+|      Plage      |      Write      |      Write(ms)     || :-------------- | :-------------: | -----------------: |
 | Max Horaire     | 0               | ???                |
 | Arrêt           | 90              | 1475               |
 | Max Anti-Horaire| 180             | ???                |
