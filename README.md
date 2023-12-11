@@ -5,10 +5,13 @@ L'objectif de cette repo est de regrouper le code source de l'Arduino ainsi que 
 
 L'avantage de GitHub est qu'il facilite le travail de groupe/collaboratif, à l'aide d'un répertoire partagé et d'un maintien à jour constant de la repo ainsi que la possibilité de versionner le travail et donc d'accéder aux anciennes versions rapidement.
 
-## Algorithme de fonctionnement
+Lien vers la  repo : https://github.com/Exaye/CRB
 
-###Le Robot
+## Info utiles
+On utilise la librairie servo, native à Arduino :
 
-###La Détection
-
-###Le Capteur
+|      Plage      |      Write      |      Write(ms)     |
+| --------------- | --------------- | -----------------  |
+| Max Horaire     | 0               | ???                |
+| Arrêt           | 90              | 1475               |
+| Max Anti-Horaire| 180             | ???                |
