@@ -5,7 +5,7 @@
 
 L'avantage de GitHub est qu'il facilite le travail de groupe/collaboratif, à l'aide d'un répertoire partagé et d'un maintien à jour constant de la repo ainsi que la possibilité de versionner le travail et donc d'accéder aux anciennes versions rapidement.</div>
 
-[color=#ff0000]**_Lien vers la  repo :_**[/color] https://github.com/Exaye/CRB
+<code style="color : red">Lien vers la  repo :</code> https://github.com/Exaye/CRB
 
 ## Info utiles
 
