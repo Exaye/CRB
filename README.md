@@ -24,11 +24,11 @@ On utilise la librairie servo, native à Arduino. Cette dernière nous permet d'
 
 ## Objectifs
 - [x] Avoir un programme de test pour chaque élément du robot
-- [ ] Prendre en main les librairies utilisées
-- [ ] Créer une librairie pour faciliter le développement du programme
-  - [ ] Pour  contrôler les déplacements du robot
-  - [ ] Faciliter l'utilisation du capteur à ultrasons
+- [x] Prendre en main les librairies utilisées
+- [ ] Créer une librairie pour faciliter le développement du programme (En cours...)
+  - [ ] Pour  contrôler les déplacements du robot (En cours...)
+  - [ ] Faciliter l'utilisation du capteur à ultrasons (En cours...)
 - [x] Mettre en place un algorithme naïf pour que le robot sorte de la pièce
-- [ ] Développer un programme suivant cet algorithme
+- [ ] Développer un programme suivant cet algorithme (En cours...)
 - [ ] Mettre en place un algorithme plus avancé afin d'optimiser la vitesse de sortie
 - [ ] Développer le programme suivant cet algorithme
