@@ -16,9 +16,9 @@ On utilise la librairie servo, native à Arduino. Cette dernière nous permet d'
 
 |      Plage      |      Write      |      Write(ms)     |
 | --------------- | --------------- | -----------------  |
-| Max Horaire     | 0               | ???                |
+| Max Horaire     | 0               | 1575               |
 | Arrêt           | 90              | 1475               |
-| Max Anti-Horaire| 180             | ???                |
+| Max Anti-Horaire| 180             | 1375               |
 
 ### Librairie Capteur
 
