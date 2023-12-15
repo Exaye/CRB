@@ -9,7 +9,10 @@ _Lien vers la  repo :_ https://github.com/Exaye/CRB
 
 ## Info utiles
 
-### Arduino
+### Salle
+  1. Longueur de la porte : 90cm
+  2. Angle optimal : 8°
+  3. Longueur de la salle : 6.3m approximativement
 
 ### Librairie Servo
 On utilise la librairie servo, native à Arduino. Cette dernière nous permet d'utiliser plus simplement les servo-moteurs du robot.
@@ -19,8 +22,6 @@ On utilise la librairie servo, native à Arduino. Cette dernière nous permet d'
 | Max Horaire     | 0               | 1575               |
 | Arrêt           | 90              | 1475               |
 | Max Anti-Horaire| 180             | 1375               |
-
-### Librairie Capteur
 
 ## Objectifs
 - [x] Avoir un programme de test pour chaque élément du robot
