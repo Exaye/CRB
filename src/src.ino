@@ -25,32 +25,40 @@ void setup(){
 }
 
 void loop(){
+  Scan();
+  while(PusleDistance() > 100){
+    Move(servoLeft, servoRight, 1, 1);
 
-  dist = PusleDistance();
-  
-  //Algorithme de déplacement Naïf
-  if(dist >= 10){
-    Move(servoLeft, servoRight, 1, 4);
+    //latence entre chaque execution de la loop
+    delay(100);
   }
-  if(dist < 10){
-    Rotate(servoLeft, servoRight, 1, 100);
-  }
-
-  /*Algorithme de déplacement avancé
-
-  */
-
-  //latence entre chaque execution de la loop
-  delay(100);
 }
 
 
 // Fonctions de repérage
-void Depart(){
-
-
+void Scan(){
+  int Dist[8];
+  for(short i=0;i<=8;i++){
+    Rotate(servoLeft, servoRight, 1, 100);
+    Dist[i] = PusleDistance();
+    delay(100);
+  }
+  Rotate(servoLeft, servoRight, -1, 8-MaxDistID(Dist));
+  short Rslt = MaxDistID(Dist);
+  //Serial.print("La distance la plus eloigne est ");
+  Serial.println(Rslt);
 }
-
+int MaxDistID(int arr[8]) {
+  int max = arr[0];
+  short ind = 0;
+  for (short i=0;i<=8;++i) {
+    if (arr[i] > max) {
+      max = arr[i];
+      ind = i;
+    }
+  }
+  return ind;
+}
 
 // Fonctions utiles pour les déplacements
 void Speed(Servo servo, int Direction, int SpeedLevel){
@@ -104,9 +112,9 @@ int PusleDistance(){
 
   cm = microsecondsToCentimeters(duration);
 
-  Serial.print(cm);
+  /*Serial.print(cm);
   Serial.print("cm");
-  Serial.println();
+  Serial.println();*/
   return(cm);
 }
 int microsecondsToCentimeters(long microseconds) {
