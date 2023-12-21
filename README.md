@@ -11,8 +11,9 @@ _Lien vers la  repo :_ https://github.com/Exaye/CRB
 
 ### Salle
   1. Longueur de la porte : 90cm
-  2. Angle optimal : 8°
-  3. Longueur de la salle : 6.3m approximativement
+  2. Distance minimale à la porte : 2.04m
+  3. Angle optimal : 8°
+  4. Longueur de la salle : 6.3m approximativement
 
 ### Librairie Servo
 On utilise la librairie servo, native à Arduino. Cette dernière nous permet d'utiliser plus simplement les servo-moteurs du robot.
@@ -26,10 +27,11 @@ On utilise la librairie servo, native à Arduino. Cette dernière nous permet d'
 ## Objectifs
 - [x] Avoir un programme de test pour chaque élément du robot
 - [x] Prendre en main les librairies utilisées
-- [ ] Créer une librairie pour faciliter le développement du programme (En cours...)
-  - [ ] Pour  contrôler les déplacements du robot (En cours...)
-  - [ ] Faciliter l'utilisation du capteur à ultrasons (En cours...)
+- [x] Créer une librairie pour faciliter le développement du programme (En cours...)
+  - [x] Pour  contrôler les déplacements du robot (En cours...)
+  - [x] Faciliter l'utilisation du capteur à ultrasons (En cours...)
 - [x] Mettre en place un algorithme naïf pour que le robot sorte de la pièce
-- [ ] Développer un programme suivant cet algorithme (En cours...)
-- [ ] Mettre en place un algorithme plus avancé afin d'optimiser la vitesse de sortie
+- [x] Développer un programme suivant cet algorithme (En cours...)
+- [x] Mettre en place un algorithme plus avancé afin d'optimiser la vitesse de sortie
 - [ ] Développer le programme suivant cet algorithme
+- [ ] Tester cet Algorithme sur un Prototype puis Robot
