@@ -5,6 +5,7 @@ const int pingPin = 12;
 
 //Déclaration des variables globales
 int dist;
+int tours = 18;
 
 //Déclaration des deux Servo
 Servo servoLeft;
@@ -22,12 +23,13 @@ void setup(){
 
   //On imopse les vitesses initiales à l'arrêt
   servoLeft.writeMicroseconds(1475);
+  servoRight.writeMicroseconds(1475);
 }
 
 void loop(){
   Scan();
   while(PusleDistance() > 100){
-    Move(servoLeft, servoRight, 1, 1);
+    Move(servoLeft, servoRight, 1, 4);
 
     //latence entre chaque execution de la loop
     delay(100);
@@ -37,21 +39,26 @@ void loop(){
 
 // Fonctions de repérage
 void Scan(){
-  int Dist[8];
-  for(short i=0;i<=8;i++){
+  int Dist[tours];
+  Rotate(servoLeft, servoRight, -1, 300);
+  for(short i=0;i<=tours;i++){
     Rotate(servoLeft, servoRight, 1, 100);
+    delay(100);
     Dist[i] = PusleDistance();
     delay(100);
   }
-  Rotate(servoLeft, servoRight, -1, 8-MaxDistID(Dist));
   short Rslt = MaxDistID(Dist);
+  for(int i=0;i<=tours-Rslt;i++){
+    Rotate(servoLeft, servoRight, -1, 100);
+    delay(100);
+  }
   //Serial.print("La distance la plus eloigne est ");
-  Serial.println(Rslt);
+  //Serial.println(Rslt);
 }
-int MaxDistID(int arr[8]) {
+int MaxDistID(int arr[tours]) {
   int max = arr[0];
   short ind = 0;
-  for (short i=0;i<=8;++i) {
+  for (short i=0;i<=tours;++i) {
     if (arr[i] > max) {
       max = arr[i];
       ind = i;
@@ -112,9 +119,9 @@ int PusleDistance(){
 
   cm = microsecondsToCentimeters(duration);
 
-  /*Serial.print(cm);
+  Serial.print(cm);
   Serial.print("cm");
-  Serial.println();*/
+  Serial.println();
   return(cm);
 }
 int microsecondsToCentimeters(long microseconds) {
