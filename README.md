@@ -33,5 +33,5 @@ On utilise la librairie servo, native à Arduino. Cette dernière nous permet d'
 - [x] Mettre en place un algorithme naïf pour que le robot sorte de la pièce
 - [x] Développer un programme suivant cet algorithme (En cours...)
 - [x] Mettre en place un algorithme plus avancé afin d'optimiser la vitesse de sortie
-- [ ] Développer le programme suivant cet algorithme
+- [X] Développer le programme suivant cet algorithme
 - [ ] Tester cet Algorithme sur un Prototype puis Robot
