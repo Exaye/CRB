@@ -1,11 +1,11 @@
 #include <Servo.h>
 
 //Pin du Sensor
-const int pingPin = 12;
+const int pingPin = 9;
 
 //Déclaration des variables globales
 int dist;
-int tours = 18;
+int tours = 32;
 
 //Déclaration des deux Servo
 Servo servoLeft;
@@ -18,8 +18,8 @@ void setup(){
   / Droite assigné à la pin 10
   / Gauche assigné à la pin 11
   */
-  servoLeft.attach(11);
-  servoRight.attach(10);
+  servoLeft.attach(10);
+  servoRight.attach(8);
 
   //On imopse les vitesses initiales à l'arrêt
   servoLeft.writeMicroseconds(1475);
@@ -28,7 +28,7 @@ void setup(){
 
 void loop(){
   Scan();
-  while(PusleDistance() > 100){
+  while(PusleDistance() > 50){
     Move(servoLeft, servoRight, 1, 4);
 
     //latence entre chaque execution de la loop
@@ -40,22 +40,23 @@ void loop(){
 // Fonctions de repérage
 void Scan(){
   int Dist[tours];
-  Rotate(servoLeft, servoRight, -1, 300);
+  Rotate(servoLeft, servoRight, -1, 400);
   for(short i=0;i<=tours;i++){
-    Rotate(servoLeft, servoRight, 1, 100);
-    delay(100);
     Dist[i] = PusleDistance();
     delay(100);
+    Rotate(servoLeft, servoRight, 1, 60);
+    Speed(servoLeft,1,0,0);
+    Speed(servoRight,1,0,1);
   }
   short Rslt = MaxDistID(Dist);
   for(int i=0;i<=tours-Rslt;i++){
-    Rotate(servoLeft, servoRight, -1, 100);
+    Rotate(servoLeft, servoRight, -1, 60);
     delay(100);
   }
   //Serial.print("La distance la plus eloigne est ");
   //Serial.println(Rslt);
 }
-int MaxDistID(int arr[tours]) {
+int MaxDistID(int *arr) {
   int max = arr[0];
   short ind = 0;
   for (short i=0;i<=tours;++i) {
@@ -68,36 +69,44 @@ int MaxDistID(int arr[tours]) {
 }
 
 // Fonctions utiles pour les déplacements
-void Speed(Servo servo, int Direction, int SpeedLevel){
+void Speed(Servo servo, int Direction, int SpeedLevel, int ind){
 
   // Direction = 1 --> Horaire || Direction = -1 --> Anti-Horaire
   // SpeedLevel range from 0 to 4
-  servo.writeMicroseconds(1475 + Direction*25*SpeedLevel);
+  if(ind == 0){
+    servo.writeMicroseconds(1475 + Direction*25*SpeedLevel - 20);
+  }
+  else if(ind==1 && SpeedLevel>=1){
+    servo.writeMicroseconds(1475 + Direction*25*SpeedLevel);
+  }
+  else{
+    servo.writeMicroseconds(1475 + Direction*25*SpeedLevel);
+  }
 }
 void Move(Servo ServoLeft, Servo ServoRight, int Direction, int SpeedLevel){
   // Direction = 1 --> Avant || Direction = -1 --> Arrière
-  Speed(ServoLeft, Direction*(-1), SpeedLevel);
-  Speed(ServoRight, Direction*1, SpeedLevel);
+  Speed(ServoLeft, Direction*(-1), SpeedLevel, 0);
+  Speed(ServoRight, Direction*1, SpeedLevel, 1);
 }
 void Rotate(Servo ServoLeft, Servo ServoRight, int Direction, int Time){
 
-  Speed(ServoLeft, -1, 0);
-  Speed(ServoRight, 1, 0);
+  Speed(ServoLeft, -1, 0, 0);
+  Speed(ServoRight, 1, 0, 1);
 
   // Direction = 1 --> Sens Horaire || Direction = -1 --> Sens Anti-Horaire
   if(Direction == 1){
-    Speed(ServoLeft, 1, 4);
-    Speed(ServoRight, 1, 4);
+    Speed(ServoLeft, 1, 4, 0);
+    Speed(ServoRight, 1, 4, 1);
     delay(Time);
   }
   if(Direction == -1){
-    Speed(ServoLeft, -1, 4);
-    Speed(ServoRight, -1, 4);
+    Speed(ServoLeft, -1, 4, 0);
+    Speed(ServoRight, -1, 4, 1);
     delay(Time);
   }
 
-  Speed(ServoLeft, -1, 0);
-  Speed(ServoRight, 1, 0);
+  Speed(ServoLeft, -1, 0, 0);
+  Speed(ServoRight, 1, 0, 1);
 
 }
 
