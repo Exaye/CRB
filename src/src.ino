@@ -50,11 +50,9 @@ void Scan(){
     Speed(servoRight,1,0,1);
   }
   short Rslt = MaxDistID(Dist);
-  if(Dist[Rslt] >= 310){
-    for(int i=0;i<=tours-Rslt;i++){
-      Rotate(servoLeft, servoRight, -1, 60);
-      delay(100);
-    }
+  for(int i=0;i<=tours-Rslt;i++){
+    Rotate(servoLeft, servoRight, -1, 60);
+    delay(100);
   }
   //Serial.print("La distance la plus eloigne est ");
   //Serial.println(Rslt);
