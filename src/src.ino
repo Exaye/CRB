@@ -5,6 +5,7 @@ const int pingPin = 9;
 
 //Déclaration des variables globales
 int dist;
+int securite = 50;
 int tours = 32;
 
 //Déclaration des deux Servo
@@ -28,7 +29,7 @@ void setup(){
 
 void loop(){
   Scan();
-  while(PusleDistance() > 50){
+  while(PusleDistance() > securite){
     Move(servoLeft, servoRight, 1, 4);
 
     //latence entre chaque execution de la loop
@@ -40,7 +41,7 @@ void loop(){
 // Fonctions de repérage
 void Scan(){
   int Dist[tours];
-  Rotate(servoLeft, servoRight, -1, 400);
+  Rotate(servoLeft, servoRight, -1, 300);
   for(short i=0;i<=tours;i++){
     Dist[i] = PusleDistance();
     delay(100);
@@ -49,9 +50,11 @@ void Scan(){
     Speed(servoRight,1,0,1);
   }
   short Rslt = MaxDistID(Dist);
-  for(int i=0;i<=tours-Rslt;i++){
-    Rotate(servoLeft, servoRight, -1, 60);
-    delay(100);
+  if(Dist[Rslt] >= 310){
+    for(int i=0;i<=tours-Rslt;i++){
+      Rotate(servoLeft, servoRight, -1, 60);
+      delay(100);
+    }
   }
   //Serial.print("La distance la plus eloigne est ");
   //Serial.println(Rslt);
